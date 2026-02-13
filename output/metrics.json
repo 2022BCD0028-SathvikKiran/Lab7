@@ -1,0 +1,22 @@
+[
+    {
+        "Experiment ID": "Exp-01",
+        "Model Type": "Linear Regression",
+        "Hyperparameters": "Default",
+        "Preprocessing-Steps": null,
+        "Feature-Selection-Method": "All Selected",
+        "Train/Test-Split": "80-20",
+        "MSE": 0.5466964419594447,
+        "R^2 Score": 0.2597673129771393
+    },
+    {
+        "Experiment ID": "Exp-02",
+        "Model Type": "Linear Regression - Lasso",
+        "Hyperparameters": "Regularization",
+        "Preprocessing-Steps": "Standardization",
+        "Feature-Selection-Method": "correlation-based",
+        "Train/Test-Split": "80-20",
+        "MSE": 0.3887196419595183,
+        "accuracy": 0.4736695486165171
+    }
+]
