@@ -5,10 +5,13 @@ pipeline {
         VENV_DIR = "venv"
         METRICS_FILE = "training-artifacts-py3.11/metrics.json"
         BEST_ACCURACY_FILE = "best-accuracy"
-        DOCKER_IMAGE = "2022bcd0013ashiqfiroz/wine-quality-app-jenkins"
+        DOCKER_IMAGE = "2022BCD0028-SathvikKiran/model"
         CURRENT_ACCURACY = "0"
         MODEL_IMPROVED = "false"
         ARTIFACTS_DIR = "training-artifacts-py3.11"
+        GIT_USERNAME = credentials('git-creds')
+        DOCKERHUB_USERNAME = credentials('dockerhub-creds')
+        BEST_ACCURACY = credentials('best-accuracy')
     }
 
     stages {
@@ -16,7 +19,8 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/2022bcd0013-ashiq-firoz/lab3.git'
+                    url: 'https://github.com/2022BCD0028-SathvikKiran/lab-03.git',
+                    credentialsId: 'git-creds'
             }
         }
 
@@ -131,7 +135,7 @@ pipeline {
 
         stage('Build Docker Image') {
             when {
-                expression { env.MODEL_IMPROVED == "false" }  // FIXED: Changed from "false"
+                expression { env.MODEL_IMPROVED == "true" }
             }
             steps {
                 script {
@@ -153,7 +157,7 @@ pipeline {
 
         stage('Push Docker Image') {
             when {
-                expression { env.MODEL_IMPROVED == "false" }  // FIXED: Changed from "false"
+                expression { env.MODEL_IMPROVED == "true" }
             }
             steps {
                 script {
