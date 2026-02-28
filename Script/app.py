@@ -3,7 +3,7 @@ from pydantic import BaseModel
 import numpy as np
 import joblib
 
-model = joblib.load("./training-artifacts-py3.11/model-linear-exp1.pkl")
+model = joblib.load("./output/model-linear-exp1.pkl")
 
 app = FastAPI(
     title="Wine Quality Prediction API",

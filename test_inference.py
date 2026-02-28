@@ -2,7 +2,7 @@ import requests
 import sys
 
 # Using Docker networking and port 8002 (as defined in their Dockerfile)
-API_URL = "http://10.2.133.39:8002/predict" 
+API_URL = "http://host.docker.internal:8002/predict" 
 
 # FIXED PAYLOAD: Exactly matching the 9 features in WineFeatures BaseModel
 valid_payload = {
